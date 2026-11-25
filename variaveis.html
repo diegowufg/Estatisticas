@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Variáveis aleatórias discretas · Caderno de Probabilidade</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Páginas do caderno">
+    <p class="brand">Caderno de Probabilidade</p>
+    <ul id="nav">
+      <li><a href="index.html"><span class="g">—</span>Início</a></li>
+      <li><a href="variaveis.html" aria-current="page"><span class="g">p(x)</span>Variáveis aleatórias</a></li>
+      <li><a href="binomial.html"><span class="g">C(n,k)</span>Binomial</a></li>
+      <li><a href="poisson.html"><span class="g">e<sup>−λ</sup></span>Poisson</a></li>
+      <li><a href="aproximacao.html"><span class="g">≈</span>Binomial por Poisson</a></li>
+      <li><a href="normal.html"><span class="g">Φ(z)</span>Normal</a></li>
+      <li><a href="mapa.html"><span class="g">◇</span>Mapa mental</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="page" id="p-variaveis">
+      <p class="kicker">Tópico 1</p>
+      <h1>Variáveis aleatórias discretas</h1>
+      <p class="lead">Uma variável aleatória discreta transforma o resultado de um experimento em um número e só assume valores que podem ser listados: 0, 1, 2, 3…</p>
+
+      <h2>Função de probabilidade</h2>
+      <p>Ela diz com que chance a variável assume cada valor. Duas condições a definem como função de probabilidade válida:</p>
+      <div class="eq"><span class="cap">Definição</span><span class="f">p(x) = P(X = x)</span></div>
+      <ul class="plain"><li>p(x) ≥ 0 para todo valor x;</li><li>a soma de todos os p(x) é exatamente 1.</li></ul>
+
+      <h2>Esperança e variância</h2>
+      <p>A esperança é a média ponderada pelas probabilidades. A variância mede o quanto os valores se espalham em torno dela.</p>
+      <div class="eq"><span class="cap">Esperança</span><span class="f">E(X) = Σ x · p(x)</span></div>
+      <div class="eq"><span class="cap">Variância e desvio padrão</span><span class="f">Var(X) = E(X²) − [E(X)]²  ·  σ = √Var(X)</span></div>
+
+      <div class="lab">
+        <h3>Calculadora</h3>
+        <p class="q">Número de defeitos em uma peça: edite as probabilidades.</p>
+        <div class="ctl">
+          <label>p(0)<input id="v-p0" type="number" step="0.05" min="0" max="1" value="0.4"></label>
+          <label>p(1)<input id="v-p1" type="number" step="0.05" min="0" max="1" value="0.3"></label>
+          <label>p(2)<input id="v-p2" type="number" step="0.05" min="0" max="1" value="0.2"></label>
+          <label>p(3)<input id="v-p3" type="number" step="0.05" min="0" max="1" value="0.1"></label>
+        </div>
+        <div class="stats">
+          <div class="stat"><span>Soma de p(x)</span><b id="v-sum"></b></div>
+          <div class="stat"><span>E(X)</span><b id="v-e"></b></div>
+          <div class="stat"><span>E(X²)</span><b id="v-e2"></b></div>
+          <div class="stat"><span>Var(X)</span><b id="v-var"></b></div>
+          <div class="stat"><span>σ</span><b id="v-sd"></b></div>
+        </div>
+        <p class="note" id="v-msg"></p>
+      </div>
+
+      <h2>Propriedades lineares</h2>
+      <p>Para constantes a e b, mudar a escala e o ponto de partida da variável muda a média e a variância de formas diferentes: somar uma constante desloca a média, mas não altera o espalhamento.</p>
+      <div class="eq"><span class="cap">Transformação linear</span><span class="f">E(aX + b) = a·E(X) + b<br>Var(aX + b) = a²·Var(X)</span></div>
+      <div class="eq"><span class="cap">Soma de variáveis</span><span class="f">E(X + Y) = E(X) + E(Y)<br>Var(X + Y) = Var(X) + Var(Y)   se X e Y são independentes</span></div>
+
+      <div class="lab">
+        <h3>Teste a transformação</h3>
+        <p class="q">Y = aX + b, usando a variável da calculadora acima.</p>
+        <div class="ctl">
+          <label>a<input id="v-a" type="number" step="0.5" value="2"></label>
+          <label>b<input id="v-b" type="number" step="0.5" value="3"></label>
+        </div>
+        <div class="stats">
+          <div class="stat"><span>E(Y) = a·E(X) + b</span><b id="v-ey"></b></div>
+          <div class="stat"><span>Var(Y) = a²·Var(X)</span><b id="v-vy"></b></div>
+        </div>
+      </div>
+      <div class="pager"><a href="index.html"><small>Anterior</small>← Início</a><a href="binomial.html"><small>Próximo</small>Distribuição binomial →</a></div>
+    </section>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

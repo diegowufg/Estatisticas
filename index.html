@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caderno de Probabilidade</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Páginas do caderno">
+    <p class="brand">Caderno de Probabilidade</p>
+    <ul id="nav">
+      <li><a href="index.html" aria-current="page"><span class="g">—</span>Início</a></li>
+      <li><a href="variaveis.html"><span class="g">p(x)</span>Variáveis aleatórias</a></li>
+      <li><a href="binomial.html"><span class="g">C(n,k)</span>Binomial</a></li>
+      <li><a href="poisson.html"><span class="g">e<sup>−λ</sup></span>Poisson</a></li>
+      <li><a href="aproximacao.html"><span class="g">≈</span>Binomial por Poisson</a></li>
+      <li><a href="normal.html"><span class="g">Φ(z)</span>Normal</a></li>
+      <li><a href="mapa.html"><span class="g">◇</span>Mapa mental</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="page" id="p-inicio">
+      <div class="hero">
+        <div>
+          <p class="kicker">Probabilidade e estatística</p>
+          <h1>Da contagem de sucessos à curva normal</h1>
+          <p class="lead">Cinco modelos que aparecem em quase toda prova e em muito dado real, com as fórmulas, a ideia por trás de cada uma e uma calculadora para testar os números.</p>
+        </div>
+        <div class="plot">
+          <p class="cap">Binomial(n = 20, p = 0,4) e a curva normal que a acompanha</p>
+          <svg class="chart" id="hero-chart" role="img" aria-label="Barras da distribuição binomial com a curva normal sobreposta"></svg>
+        </div>
+      </div>
+      <div class="index">
+        <a class="row" href="variaveis.html"><span class="g">p(x)</span><div><h3>Variáveis aleatórias discretas</h3><p>Função de probabilidade, esperança, variância e propriedades lineares.</p></div><span class="ar">→</span></a>
+        <a class="row" href="binomial.html"><span class="g">C(n,k)</span><div><h3>Distribuição binomial</h3><p>n tentativas independentes, probabilidades acumuladas e complementar.</p></div><span class="ar">→</span></a>
+        <a class="row" href="poisson.html"><span class="g">e<sup>−λ</sup>λ<sup>k</sup></span><div><h3>Distribuição de Poisson</h3><p>Taxa média por intervalo contínuo, média, variância e ajuste de λ.</p></div><span class="ar">→</span></a>
+        <a class="row" href="aproximacao.html"><span class="g">λ = np</span><div><h3>Aproximação da binomial pela Poisson</h3><p>Critérios de aplicação e a conversão λ = n·p.</p></div><span class="ar">→</span></a>
+        <a class="row" href="normal.html"><span class="g">Φ(z)</span><div><h3>Distribuição normal</h3><p>Padronização, leitura da Tabela Z e regras de cálculo de área.</p></div><span class="ar">→</span></a>
+        <a class="row" href="mapa.html"><span class="g">◇</span><div><h3>Mapa mental</h3><p>Como os cinco assuntos se ligam, em um único esquema.</p></div><span class="ar">→</span></a>
+      </div>
+      <p class="foot">Caderno de Probabilidade · material de estudo</p>
+    </section>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

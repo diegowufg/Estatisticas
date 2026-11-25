@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Distribuição binomial · Caderno de Probabilidade</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Páginas do caderno">
+    <p class="brand">Caderno de Probabilidade</p>
+    <ul id="nav">
+      <li><a href="index.html"><span class="g">—</span>Início</a></li>
+      <li><a href="variaveis.html"><span class="g">p(x)</span>Variáveis aleatórias</a></li>
+      <li><a href="binomial.html" aria-current="page"><span class="g">C(n,k)</span>Binomial</a></li>
+      <li><a href="poisson.html"><span class="g">e<sup>−λ</sup></span>Poisson</a></li>
+      <li><a href="aproximacao.html"><span class="g">≈</span>Binomial por Poisson</a></li>
+      <li><a href="normal.html"><span class="g">Φ(z)</span>Normal</a></li>
+      <li><a href="mapa.html"><span class="g">◇</span>Mapa mental</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="page" id="p-binomial">
+      <p class="kicker">Tópico 2</p>
+      <h1>Distribuição binomial</h1>
+      <p class="lead">Conta quantos sucessos acontecem em n tentativas. É o modelo de “quantas peças saem com defeito em um lote” ou “quantas pessoas respondem sim em uma amostra”.</p>
+
+      <h2>Quando usar</h2>
+      <ul class="plain">
+        <li>O número de tentativas n é fixo.</li>
+        <li>Cada tentativa tem só dois resultados: sucesso ou fracasso.</li>
+        <li>As tentativas são independentes.</li>
+        <li>A probabilidade de sucesso p é a mesma em todas.</li>
+      </ul>
+      <p>Escreve-se X ~ B(n, p).</p>
+
+      <h2>Probabilidade de exatamente k sucessos</h2>
+      <div class="eq"><span class="cap">Função de probabilidade</span><span class="f">P(X = k) = C(n, k) · p<sup>k</sup> · (1 − p)<sup>n − k</sup></span></div>
+      <div class="eq"><span class="cap">Combinação</span><span class="f">C(n, k) = n! / [ k! · (n − k)! ]</span></div>
+      <p>O fator C(n, k) conta de quantas maneiras os k sucessos podem se distribuir entre as n tentativas.</p>
+      <div class="eq"><span class="cap">Média e variância</span><span class="f">E(X) = n·p<br>Var(X) = n·p·(1 − p)</span></div>
+
+      <h2>Probabilidades acumuladas e complementar</h2>
+      <div class="eq"><span class="cap">Acumulada</span><span class="f">P(X ≤ k) = P(X=0) + P(X=1) + … + P(X=k)</span></div>
+      <div class="eq"><span class="cap">Complementar</span><span class="f">P(X ≥ k) = 1 − P(X ≤ k − 1)<br>P(X &gt; k) = 1 − P(X ≤ k)</span></div>
+      <p>A complementar poupa contas: para “pelo menos 3”, é mais rápido tirar de 1 as probabilidades de 0, 1 e 2 do que somar de 3 até n.</p>
+
+      <div class="lab">
+        <h3>Calculadora</h3>
+        <p class="q">Um lote tem n peças e cada uma tem chance p de sair com defeito.</p>
+        <div class="ctl">
+          <label>n (tentativas)<input id="b-n" type="number" min="1" max="200" step="1" value="12"></label>
+          <label>p (sucesso)<input id="b-p" type="number" min="0" max="1" step="0.05" value="0.35"></label>
+          <label>k<input id="b-k" type="number" min="0" step="1" value="4"></label>
+        </div>
+        <div class="stats">
+          <div class="stat"><span>P(X = k)</span><b id="b-eq"></b></div>
+          <div class="stat"><span>P(X ≤ k)</span><b id="b-le"></b></div>
+          <div class="stat"><span>P(X ≥ k)</span><b id="b-ge"></b></div>
+          <div class="stat"><span>E(X) = np</span><b id="b-mean"></b></div>
+          <div class="stat"><span>Var(X)</span><b id="b-var"></b></div>
+        </div>
+        <svg class="chart" id="b-chart" role="img" aria-label="Distribuição binomial; barras amarelas são os valores até k"></svg>
+        <p class="note">Barras amarelas: valores de 0 até k, que somam P(X ≤ k).</p>
+      </div>
+      <div class="pager"><a href="variaveis.html"><small>Anterior</small>← Variáveis aleatórias</a><a href="poisson.html"><small>Próximo</small>Distribuição de Poisson →</a></div>
+    </section>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

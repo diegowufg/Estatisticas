@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Distribuição de Poisson · Caderno de Probabilidade</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Páginas do caderno">
+    <p class="brand">Caderno de Probabilidade</p>
+    <ul id="nav">
+      <li><a href="index.html"><span class="g">—</span>Início</a></li>
+      <li><a href="variaveis.html"><span class="g">p(x)</span>Variáveis aleatórias</a></li>
+      <li><a href="binomial.html"><span class="g">C(n,k)</span>Binomial</a></li>
+      <li><a href="poisson.html" aria-current="page"><span class="g">e<sup>−λ</sup></span>Poisson</a></li>
+      <li><a href="aproximacao.html"><span class="g">≈</span>Binomial por Poisson</a></li>
+      <li><a href="normal.html"><span class="g">Φ(z)</span>Normal</a></li>
+      <li><a href="mapa.html"><span class="g">◇</span>Mapa mental</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="page" id="p-poisson">
+      <p class="kicker">Tópico 3</p>
+      <h1>Distribuição de Poisson</h1>
+      <p class="lead">Conta ocorrências em um intervalo contínuo de tempo, comprimento ou área, quando os eventos chegam a uma taxa média estável: chamadas por hora, falhas por metro de fio, erros por página.</p>
+
+      <h2>Quando usar</h2>
+      <ul class="plain">
+        <li>Os eventos ocorrem de forma independente.</li>
+        <li>A taxa média por intervalo, λ, é constante.</li>
+        <li>Dois eventos não acontecem exatamente no mesmo instante.</li>
+      </ul>
+      <p>Escreve-se X ~ P(λ).</p>
+
+      <h2>Função de probabilidade</h2>
+      <div class="eq"><span class="cap">Probabilidade de k ocorrências</span><span class="f">P(X = k) = e<sup>−λ</sup> · λ<sup>k</sup> / k!      k = 0, 1, 2, …</span></div>
+
+      <h2>Média e variância</h2>
+      <div class="eq"><span class="cap">Característica da Poisson</span><span class="f">E(X) = λ<br>Var(X) = λ</span></div>
+      <p>Média e variância iguais a λ são a marca da Poisson. Em dados reais, uma variância muito maior que a média indica que o modelo não se ajusta bem.</p>
+
+      <h2>Ajuste de λ ao intervalo</h2>
+      <p>λ vale para um intervalo específico. Se o intervalo muda, a taxa muda na mesma proporção.</p>
+      <div class="eq"><span class="cap">Mudança de intervalo</span><span class="f">λ' = λ · (t' / t)</span></div>
+      <p>Exemplo: um site recebe em média 6 acessos por minuto. Em 30 segundos, λ' = 6 · 0,5 = 3. Em 5 minutos, λ' = 30.</p>
+
+      <div class="lab">
+        <h3>Calculadora</h3>
+        <p class="q">Defina a taxa média λ e o número de ocorrências k.</p>
+        <div class="ctl">
+          <label>λ (taxa média)<input id="l-l" type="number" min="0.1" max="50" step="0.5" value="4"></label>
+          <label>k<input id="l-k" type="number" min="0" max="100" step="1" value="6"></label>
+        </div>
+        <div class="stats">
+          <div class="stat"><span>P(X = k)</span><b id="l-eq"></b></div>
+          <div class="stat"><span>P(X ≤ k)</span><b id="l-le"></b></div>
+          <div class="stat"><span>P(X ≥ k)</span><b id="l-ge"></b></div>
+          <div class="stat"><span>E(X) = Var(X)</span><b id="l-mean"></b></div>
+        </div>
+        <svg class="chart" id="l-chart" role="img" aria-label="Distribuição de Poisson; barras amarelas são os valores até k"></svg>
+      </div>
+      <div class="pager"><a href="binomial.html"><small>Anterior</small>← Distribuição binomial</a><a href="aproximacao.html"><small>Próximo</small>Binomial por Poisson →</a></div>
+    </section>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

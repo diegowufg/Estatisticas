@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa mental · Caderno de Probabilidade</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Páginas do caderno">
+    <p class="brand">Caderno de Probabilidade</p>
+    <ul id="nav">
+      <li><a href="index.html"><span class="g">—</span>Início</a></li>
+      <li><a href="variaveis.html"><span class="g">p(x)</span>Variáveis aleatórias</a></li>
+      <li><a href="binomial.html"><span class="g">C(n,k)</span>Binomial</a></li>
+      <li><a href="poisson.html"><span class="g">e<sup>−λ</sup></span>Poisson</a></li>
+      <li><a href="aproximacao.html"><span class="g">≈</span>Binomial por Poisson</a></li>
+      <li><a href="normal.html"><span class="g">Φ(z)</span>Normal</a></li>
+      <li><a href="mapa.html" aria-current="page"><span class="g">◇</span>Mapa mental</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="page" id="p-mapa">
+      <p class="kicker">Visão geral</p>
+      <h1>Mapa mental</h1>
+      <p class="lead">Os cinco assuntos em um esquema. Clique em um ramo amarelo para abrir o tópico. A linha tracejada mostra que a aproximação conecta a binomial à Poisson.</p>
+      <div class="map"><svg id="mm" viewBox="0 0 900 700" role="img" aria-label="Mapa mental dos modelos de probabilidade"></svg></div>
+      <div class="pager"><a href="normal.html"><small>Anterior</small>← Distribuição normal</a><a href="index.html"><small>Voltar</small>Início →</a></div>
+    </section>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

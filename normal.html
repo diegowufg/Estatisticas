@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Distribuição normal · Caderno de Probabilidade</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Páginas do caderno">
+    <p class="brand">Caderno de Probabilidade</p>
+    <ul id="nav">
+      <li><a href="index.html"><span class="g">—</span>Início</a></li>
+      <li><a href="variaveis.html"><span class="g">p(x)</span>Variáveis aleatórias</a></li>
+      <li><a href="binomial.html"><span class="g">C(n,k)</span>Binomial</a></li>
+      <li><a href="poisson.html"><span class="g">e<sup>−λ</sup></span>Poisson</a></li>
+      <li><a href="aproximacao.html"><span class="g">≈</span>Binomial por Poisson</a></li>
+      <li><a href="normal.html" aria-current="page"><span class="g">Φ(z)</span>Normal</a></li>
+      <li><a href="mapa.html"><span class="g">◇</span>Mapa mental</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="page" id="p-normal">
+      <p class="kicker">Tópico 5</p>
+      <h1>Distribuição normal</h1>
+      <p class="lead">A curva em forma de sino para variáveis contínuas, como altura, peso e erro de medida. Aqui a probabilidade é uma área sob a curva, e um valor isolado tem probabilidade zero.</p>
+
+      <h2>Densidade</h2>
+      <div class="eq"><span class="cap">X ~ N(μ, σ²)</span><span class="f">f(x) = 1 / (σ·√(2π)) · e<sup>−(x − μ)² / (2σ²)</sup></span></div>
+      <p>μ é o centro da curva e σ controla a largura. A área total sob ela vale 1.</p>
+
+      <h2>Padronização</h2>
+      <p>Para consultar uma única tabela, qualquer normal é convertida na normal padrão, com média 0 e desvio padrão 1.</p>
+      <div class="eq"><span class="cap">Escore Z</span><span class="f">Z = (X − μ) / σ</span></div>
+      <p>Z diz a quantos desvios padrão o valor está da média.</p>
+
+      <h2>Lendo a Tabela Z</h2>
+      <p>A tabela traz Φ(z) = P(Z ≤ z), a área à esquerda de z. Separe z em duas partes: a linha traz a parte inteira e a primeira casa decimal, e a coluna traz a segunda casa. Para z = 1,64, vá à linha 1,6 e à coluna 0,04: Φ(1,64) = 0,9495.</p>
+
+      <h2>Regras de cálculo de área</h2>
+      <div class="eq"><span class="cap">À direita</span><span class="f">P(Z &gt; z) = 1 − Φ(z)</span></div>
+      <div class="eq"><span class="cap">Entre dois valores</span><span class="f">P(a &lt; Z &lt; b) = Φ(b) − Φ(a)</span></div>
+      <div class="eq"><span class="cap">Simetria (valores negativos)</span><span class="f">Φ(−z) = 1 − Φ(z)</span></div>
+      <p>Regra empírica: cerca de 68% dos valores ficam a até 1σ da média, 95% a até 2σ e 99,7% a até 3σ.</p>
+
+      <div class="lab">
+        <h3>Calculadora de área</h3>
+        <p class="q">Exemplo: alturas com média μ e desvio padrão σ. Qual a proporção entre a e b?</p>
+        <div class="ctl">
+          <label>μ<input id="n-m" type="number" step="1" value="170"></label>
+          <label>σ<input id="n-s" type="number" min="0.1" step="1" value="10"></label>
+          <label>a<input id="n-a" type="number" step="1" value="160"></label>
+          <label>b<input id="n-b" type="number" step="1" value="185"></label>
+        </div>
+        <div class="stats">
+          <div class="stat"><span>z de a</span><b id="n-za"></b></div>
+          <div class="stat"><span>z de b</span><b id="n-zb"></b></div>
+          <div class="stat"><span>P(a &lt; X &lt; b)</span><b id="n-p"></b></div>
+          <div class="stat"><span>P(X &gt; b)</span><b id="n-r"></b></div>
+        </div>
+        <svg class="chart" id="n-chart" role="img" aria-label="Curva normal com a área entre a e b destacada"></svg>
+      </div>
+      <div class="pager"><a href="aproximacao.html"><small>Anterior</small>← Binomial por Poisson</a><a href="mapa.html"><small>Próximo</small>Mapa mental →</a></div>
+    </section>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

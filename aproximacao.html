@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aproximação da binomial pela Poisson · Caderno de Probabilidade</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Páginas do caderno">
+    <p class="brand">Caderno de Probabilidade</p>
+    <ul id="nav">
+      <li><a href="index.html"><span class="g">—</span>Início</a></li>
+      <li><a href="variaveis.html"><span class="g">p(x)</span>Variáveis aleatórias</a></li>
+      <li><a href="binomial.html"><span class="g">C(n,k)</span>Binomial</a></li>
+      <li><a href="poisson.html"><span class="g">e<sup>−λ</sup></span>Poisson</a></li>
+      <li><a href="aproximacao.html" aria-current="page"><span class="g">≈</span>Binomial por Poisson</a></li>
+      <li><a href="normal.html"><span class="g">Φ(z)</span>Normal</a></li>
+      <li><a href="mapa.html"><span class="g">◇</span>Mapa mental</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="page" id="p-aproximacao">
+      <p class="kicker">Tópico 4</p>
+      <h1>Aproximação da binomial pela Poisson</h1>
+      <p class="lead">Com n muito grande e p muito pequeno, calcular C(n, k) fica pesado. Nesse caso a Poisson dá quase o mesmo resultado com uma conta simples.</p>
+
+      <h2>A conversão</h2>
+      <div class="eq"><span class="cap">Parâmetro da Poisson</span><span class="f">λ = n · p</span></div>
+      <div class="eq"><span class="cap">Aproximação</span><span class="f">P(X = k) ≈ e<sup>−np</sup> · (np)<sup>k</sup> / k!</span></div>
+      <p>A média se preserva (np nos dois modelos). A variância da binomial, np(1 − p), fica parecida com np quando p é pequeno, e é por isso que a troca funciona.</p>
+
+      <h2>Critérios de aplicação</h2>
+      <ul class="plain">
+        <li>n grande, em geral n ≥ 50;</li>
+        <li>p pequeno, em geral p ≤ 0,1;</li>
+        <li>como consequência, np costuma ser moderado (abaixo de 10).</li>
+      </ul>
+      <p>São regras práticas, não limites exatos. Quanto maior o n e menor o p, melhor a aproximação.</p>
+
+      <div class="lab">
+        <h3>Compare os dois modelos</h3>
+        <p class="q">Barras: binomial. Círculos: Poisson com λ = np.</p>
+        <div class="ctl">
+          <label>n<input id="a-n" type="number" min="1" max="1000" step="10" value="100"></label>
+          <label>p<input id="a-p" type="number" min="0.001" max="0.999" step="0.01" value="0.03"></label>
+        </div>
+        <div class="stats">
+          <div class="stat"><span>λ = n·p</span><b id="a-lam"></b></div>
+          <div class="stat"><span>Maior diferença</span><b id="a-diff"></b></div>
+        </div>
+        <p class="note" id="a-msg" style="margin:0 0 14px"></p>
+        <svg class="chart" id="a-chart" role="img" aria-label="Barras da binomial e círculos da Poisson"></svg>
+        <div class="wrap"><table><thead><tr><th>k</th><th>Binomial</th><th>Poisson</th><th>Diferença</th></tr></thead><tbody id="a-tbody"></tbody></table></div>
+      </div>
+      <div class="pager"><a href="poisson.html"><small>Anterior</small>← Distribuição de Poisson</a><a href="normal.html"><small>Próximo</small>Distribuição normal →</a></div>
+    </section>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
