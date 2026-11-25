@@ -1,0 +1,281 @@
+Caderno de Probabilidade
+
+- [—Início](#inicio)
+- [p(x)Variáveis aleatórias](#variaveis)
+- [C(n,k)Binomial](#binomial)
+- [e−λPoisson](#poisson)
+- [≈Binomial por Poisson](#aproximacao)
+- [Φ(z)Normal](#normal)
+- [◇Mapa mental](#mapa)
+
+Probabilidade e estatística
+
+# Da contagem de sucessos à curva normal
+
+Cinco modelos que aparecem em quase toda prova e em muito dado real, com as fórmulas, a ideia por trás de cada uma e uma calculadora para testar os números.
+
+Binomial(n = 20, p = 0,4) e a curva normal que a acompanha
+
+[p(x) Variáveis aleatórias discretas Função de probabilidade, esperança, variância e propriedades lineares. →](#variaveis) [C(n,k) Distribuição binomial n tentativas independentes, probabilidades acumuladas e complementar. →](#binomial) [e−λλk Distribuição de Poisson Taxa média por intervalo contínuo, média, variância e ajuste de λ. →](#poisson) [λ = np Aproximação da binomial pela Poisson Critérios de aplicação e a conversão λ = n·p. →](#aproximacao) [Φ(z) Distribuição normal Padronização, leitura da Tabela Z e regras de cálculo de área. →](#normal) [◇ Mapa mental Como os cinco assuntos se ligam, em um único esquema. →](#mapa)
+
+Caderno de Probabilidade · material de estudo
+
+Tópico 1
+
+# Variáveis aleatórias discretas
+
+Uma variável aleatória discreta transforma o resultado de um experimento em um número e só assume valores que podem ser listados: 0, 1, 2, 3…
+
+## Função de probabilidade
+
+Ela diz com que chance a variável assume cada valor. Duas condições a definem como função de probabilidade válida:
+
+Definiçãop(x) = P(X = x)
+
+- p(x) ≥ 0 para todo valor x;
+- a soma de todos os p(x) é exatamente 1.
+
+## Esperança e variância
+
+A esperança é a média ponderada pelas probabilidades. A variância mede o quanto os valores se espalham em torno dela.
+
+EsperançaE(X) = Σ x · p(x)
+
+Variância e desvio padrãoVar(X) = E(X²) − \[E(X)\]² · σ = √Var(X)
+
+### Calculadora
+
+Número de defeitos em uma peça: edite as probabilidades.
+
+p(0) p(1) p(2) p(3)
+
+Soma de p(x)
+
+E(X)
+
+E(X²)
+
+Var(X)
+
+σ
+
+## Propriedades lineares
+
+Para constantes a e b, mudar a escala e o ponto de partida da variável muda a média e a variância de formas diferentes: somar uma constante desloca a média, mas não altera o espalhamento.
+
+Transformação linearE(aX + b) = a·E(X) + b\
+Var(aX + b) = a²·Var(X)
+
+Soma de variáveisE(X + Y) = E(X) + E(Y)\
+Var(X + Y) = Var(X) + Var(Y) se X e Y são independentes
+
+### Teste a transformação
+
+Y = aX + b, usando a variável da calculadora acima.
+
+a b
+
+E(Y) = a·E(X) + b
+
+Var(Y) = a²·Var(X)
+
+[Anterior← Início](#inicio)[PróximoDistribuição binomial →](#binomial)
+
+Tópico 2
+
+# Distribuição binomial
+
+Conta quantos sucessos acontecem em n tentativas. É o modelo de “quantas peças saem com defeito em um lote” ou “quantas pessoas respondem sim em uma amostra”.
+
+## Quando usar
+
+- O número de tentativas n é fixo.
+- Cada tentativa tem só dois resultados: sucesso ou fracasso.
+- As tentativas são independentes.
+- A probabilidade de sucesso p é a mesma em todas.
+
+Escreve-se X \~ B(n, p).
+
+## Probabilidade de exatamente k sucessos
+
+Função de probabilidadeP(X = k) = C(n, k) · pk · (1 − p)n − k
+
+CombinaçãoC(n, k) = n! / \[ k! · (n − k)! \]
+
+O fator C(n, k) conta de quantas maneiras os k sucessos podem se distribuir entre as n tentativas.
+
+Média e variânciaE(X) = n·p\
+Var(X) = n·p·(1 − p)
+
+## Probabilidades acumuladas e complementar
+
+AcumuladaP(X ≤ k) = P(X=0) + P(X=1) + … + P(X=k)
+
+ComplementarP(X ≥ k) = 1 − P(X ≤ k − 1)\
+P(X > k) = 1 − P(X ≤ k)
+
+A complementar poupa contas: para “pelo menos 3”, é mais rápido tirar de 1 as probabilidades de 0, 1 e 2 do que somar de 3 até n.
+
+### Calculadora
+
+Um lote tem n peças e cada uma tem chance p de sair com defeito.
+
+n (tentativas) p (sucesso) k
+
+P(X = k)
+
+P(X ≤ k)
+
+P(X ≥ k)
+
+E(X) = np
+
+Var(X)
+
+Barras amarelas: valores de 0 até k, que somam P(X ≤ k).
+
+[Anterior← Variáveis aleatórias](#variaveis)[PróximoDistribuição de Poisson →](#poisson)
+
+Tópico 3
+
+# Distribuição de Poisson
+
+Conta ocorrências em um intervalo contínuo de tempo, comprimento ou área, quando os eventos chegam a uma taxa média estável: chamadas por hora, falhas por metro de fio, erros por página.
+
+## Quando usar
+
+- Os eventos ocorrem de forma independente.
+- A taxa média por intervalo, λ, é constante.
+- Dois eventos não acontecem exatamente no mesmo instante.
+
+Escreve-se X \~ P(λ).
+
+## Função de probabilidade
+
+Probabilidade de k ocorrênciasP(X = k) = e−λ · λk / k! k = 0, 1, 2, …
+
+## Média e variância
+
+Característica da PoissonE(X) = λ\
+Var(X) = λ
+
+Média e variância iguais a λ são a marca da Poisson. Em dados reais, uma variância muito maior que a média indica que o modelo não se ajusta bem.
+
+## Ajuste de λ ao intervalo
+
+λ vale para um intervalo específico. Se o intervalo muda, a taxa muda na mesma proporção.
+
+Mudança de intervaloλ' = λ · (t' / t)
+
+Exemplo: um site recebe em média 6 acessos por minuto. Em 30 segundos, λ' = 6 · 0,5 = 3. Em 5 minutos, λ' = 30.
+
+### Calculadora
+
+Defina a taxa média λ e o número de ocorrências k.
+
+λ (taxa média) k
+
+P(X = k)
+
+P(X ≤ k)
+
+P(X ≥ k)
+
+E(X) = Var(X)
+
+[Anterior← Distribuição binomial](#binomial)[PróximoBinomial por Poisson →](#aproximacao)
+
+Tópico 4
+
+# Aproximação da binomial pela Poisson
+
+Com n muito grande e p muito pequeno, calcular C(n, k) fica pesado. Nesse caso a Poisson dá quase o mesmo resultado com uma conta simples.
+
+## A conversão
+
+Parâmetro da Poissonλ = n · p
+
+AproximaçãoP(X = k) ≈ e−np · (np)k / k!
+
+A média se preserva (np nos dois modelos). A variância da binomial, np(1 − p), fica parecida com np quando p é pequeno, e é por isso que a troca funciona.
+
+## Critérios de aplicação
+
+- n grande, em geral n ≥ 50;
+- p pequeno, em geral p ≤ 0,1;
+- como consequência, np costuma ser moderado (abaixo de 10).
+
+São regras práticas, não limites exatos. Quanto maior o n e menor o p, melhor a aproximação.
+
+### Compare os dois modelos
+
+Barras: binomial. Círculos: Poisson com λ = np.
+
+n p
+
+λ = n·p
+
+Maior diferença
+
+| k | Binomial | Poisson | Diferença |
+| --- | --- | --- | --- |
+
+[Anterior← Distribuição de Poisson](#poisson)[PróximoDistribuição normal →](#normal)
+
+Tópico 5
+
+# Distribuição normal
+
+A curva em forma de sino para variáveis contínuas, como altura, peso e erro de medida. Aqui a probabilidade é uma área sob a curva, e um valor isolado tem probabilidade zero.
+
+## Densidade
+
+X \~ N(μ, σ²)f(x) = 1 / (σ·√(2π)) · e−(x − μ)² / (2σ²)
+
+μ é o centro da curva e σ controla a largura. A área total sob ela vale 1.
+
+## Padronização
+
+Para consultar uma única tabela, qualquer normal é convertida na normal padrão, com média 0 e desvio padrão 1.
+
+Escore ZZ = (X − μ) / σ
+
+Z diz a quantos desvios padrão o valor está da média.
+
+## Lendo a Tabela Z
+
+A tabela traz Φ(z) = P(Z ≤ z), a área à esquerda de z. Separe z em duas partes: a linha traz a parte inteira e a primeira casa decimal, e a coluna traz a segunda casa. Para z = 1,64, vá à linha 1,6 e à coluna 0,04: Φ(1,64) = 0,9495.
+
+## Regras de cálculo de área
+
+À direitaP(Z > z) = 1 − Φ(z)
+
+Entre dois valoresP(a \< Z \< b) = Φ(b) − Φ(a)
+
+Simetria (valores negativos)Φ(−z) = 1 − Φ(z)
+
+Regra empírica: cerca de 68% dos valores ficam a até 1σ da média, 95% a até 2σ e 99,7% a até 3σ.
+
+### Calculadora de área
+
+Exemplo: alturas com média μ e desvio padrão σ. Qual a proporção entre a e b?
+
+μ σ a b
+
+z de a
+
+z de b
+
+P(a \< X \< b)
+
+P(X > b)
+
+[Anterior← Binomial por Poisson](#aproximacao)[PróximoMapa mental →](#mapa)
+
+Visão geral
+
+# Mapa mental
+
+Os cinco assuntos em um esquema. Clique em um ramo amarelo para abrir o tópico. A linha tracejada mostra que a aproximação conecta a binomial à Poisson.
+
+[Anterior← Distribuição normal](#normal)[VoltarInício →](#inicio)
