@@ -1,0 +1,59 @@
+name: Pipeline CI/CD - Estatisticas
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  ci-validacao:
+    name: CI - Validação HTML e JS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Baixar código do repositório
+        uses: actions/checkout@v4
+
+      - name: 2. Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 3. Instalar validadores (HTMLHint e ESLint)
+        run: npm install -g htmlhint eslint
+
+      - name: 4. Validar arquivos HTML
+        run: htmlhint "**/*.html"
+
+      - name: 5. Validar arquivo JavaScript (sintaxe básica)
+        run: node --check app.js
+
+      - name: 6. Preparar pacote do site para publicação
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+  cd-deploy:
+    name: CD - Publicar no GitHub Pages
+    needs: ci-validacao
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
